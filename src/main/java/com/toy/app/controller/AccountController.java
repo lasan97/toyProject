@@ -1,12 +1,12 @@
-package com.toy.app.service.controller;
+package com.toy.app.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class ModelController {
+public class AccountController {
 
-    @GetMapping("/")
+    @GetMapping("/1")
     public String hello(){
         return "index";
     }
