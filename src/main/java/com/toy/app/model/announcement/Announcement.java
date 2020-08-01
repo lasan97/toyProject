@@ -29,7 +29,12 @@ public class Announcement {
 
     private String location; // 위치 ex) 판교
 
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "enum('TECH','SERVICE','STAFF','DESIGN')")
     private Sectors sectors;
+
+    private String keyword;
+
 
 
 
