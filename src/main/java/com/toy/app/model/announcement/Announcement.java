@@ -1,6 +1,8 @@
 package com.toy.app.model.announcement;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -11,11 +13,17 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "announcement")
+@Table(name = "tb_announcement")
 public class Announcement {
 
     @Id
     private Long idx;
+
+    @CreationTimestamp
+    private Date createDt;
+
+    @UpdateTimestamp
+    private Date updateDt;
 
     private String name; // 공고 제목
 
@@ -35,13 +43,20 @@ public class Announcement {
 
     private String keyword;
 
-
-
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "enum('PENDING','START','DEN') default 'PENDING'")
+    private AnnouncementStatus announcementStatus;
 
     public enum RecruitType {
         TEMPORARY, // 비정규직
         PERMANENT, // 정규직
         CONTRACT,    // 계약직
+    }
+
+    public enum AnnouncementStatus {
+        PENDING, // 대기중
+        START,  // 진행중
+        DEN,    // 종료
     }
 
     public enum Sectors {

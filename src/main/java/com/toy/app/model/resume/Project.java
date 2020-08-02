@@ -1,5 +1,6 @@
 package com.toy.app.model.resume;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -11,11 +12,12 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "projects")
-public class Projects {
+@Table(name = "tb_project")
+public class Project {
 
     @Id
-    private Long idx;
+    @GeneratedValue
+    private Long projectId;
 
     private String name; // 프로젝트 명
 
@@ -32,6 +34,10 @@ public class Projects {
     private String Technology ; // 사용 기술
 
     private String text; // 상세
+
+    @ManyToOne
+    @JsonIgnore
+    private Resume resume;
 
     public enum ProjectType {
         INHOUSE, // 사내프로젝트

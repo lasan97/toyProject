@@ -22,7 +22,8 @@ build/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
-*application.properties
+#*application.properties
+main/generated/
 
 ### NetBeans ###
 /nbproject/private/

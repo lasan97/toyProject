@@ -1,10 +1,12 @@
 package com.toy.app.model.resume;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.toy.app.model.announcement.Announcement;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -12,22 +14,28 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "career")
+@Table(name = "tb_career")
 public class Career {
     @Id
-    private Long idx;
+    @GeneratedValue
+    private Long careerId;
 
     private String company; // 회사
 
-    private String startWork; // 입사일
+    private Date startDt; // 입사일
 
-    private String endWork; // 퇴사일
+    private Date endDt; // 퇴사일
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "enum('TEMPORARY','PERMANENT','CONTRACT')")
     private Announcement.RecruitType recruitType; // 직원 유형
 
-    private String rank; // 직급
+    private String role; // 직급
 
-    private String task; // 담당 업무
+    private String position; // 담당 업무
+
+    @ManyToOne
+    @JsonIgnore
+    private Resume resume;
+
 }

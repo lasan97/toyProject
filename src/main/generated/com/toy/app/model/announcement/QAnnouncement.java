@@ -19,11 +19,17 @@ public class QAnnouncement extends EntityPathBase<Announcement> {
 
     public static final QAnnouncement announcement = new QAnnouncement("announcement");
 
+    public final EnumPath<Announcement.AnnouncementStatus> announcementStatus = createEnum("announcementStatus", Announcement.AnnouncementStatus.class);
+
     public final StringPath company = createString("company");
+
+    public final DateTimePath<java.util.Date> createDt = createDateTime("createDt", java.util.Date.class);
 
     public final DateTimePath<java.util.Date> dueDate = createDateTime("dueDate", java.util.Date.class);
 
     public final NumberPath<Long> idx = createNumber("idx", Long.class);
+
+    public final StringPath keyword = createString("keyword");
 
     public final StringPath location = createString("location");
 
@@ -32,6 +38,8 @@ public class QAnnouncement extends EntityPathBase<Announcement> {
     public final EnumPath<Announcement.RecruitType> recruitType = createEnum("recruitType", Announcement.RecruitType.class);
 
     public final EnumPath<Announcement.Sectors> sectors = createEnum("sectors", Announcement.Sectors.class);
+
+    public final DateTimePath<java.util.Date> updateDt = createDateTime("updateDt", java.util.Date.class);
 
     public QAnnouncement(String variable) {
         super(Announcement.class, forVariable(variable));

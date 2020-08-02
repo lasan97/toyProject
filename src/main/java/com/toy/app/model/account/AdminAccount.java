@@ -3,6 +3,7 @@ package com.toy.app.model.account;
 import lombok.*;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,9 +13,10 @@ import javax.persistence.Table;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "admin")
+@Table(name = "tb_admin")
 public class AdminAccount {
     @Id
+    @GeneratedValue
     private Long idx;
     private String loginId;
     private String password;
