@@ -40,4 +40,9 @@ public class LoginController {
         return ResponseEntity.ok(loginService.signinUser(request));
     }
     
+    @GetMapping("/test2")
+    public String signin2(){
+        return "/boot_template/index";
+    }
+    
 }

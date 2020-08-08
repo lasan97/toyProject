@@ -28,9 +28,10 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     runtimeOnly 'mysql:mysql-connector-java'
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-    }
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    implementation group: 'com.auth0', name: 'java-jwt', version: '3.1.0'
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
+    
 }
 def querydslSrcDir = 'src/main/generated'
 
@@ -54,5 +55,7 @@ sourceSets {
     }
 }
 test {
-    useJUnitPlatform()
+    useJUnitPlatform{
+     	includeEngines 'junit-vintage'
+    }
 }
