@@ -43,20 +43,14 @@ public class Announcement {
 
     private String keyword;
 
-    @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "enum('PENDING','START','DEN') default 'PENDING'")
-    private AnnouncementStatus announcementStatus;
+    private String content; // 내용
+
+    private Date reservationDt;
 
     public enum RecruitType {
         TEMPORARY, // 비정규직
         PERMANENT, // 정규직
         CONTRACT,    // 계약직
-    }
-
-    public enum AnnouncementStatus {
-        PENDING, // 대기중
-        START,  // 진행중
-        DEN,    // 종료
     }
 
     public enum Sectors {

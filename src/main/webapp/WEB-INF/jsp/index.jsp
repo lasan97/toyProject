@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=euc-kr" pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
