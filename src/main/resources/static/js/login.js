@@ -9,7 +9,7 @@ function ajaxSignUp() {
     	return;
     } 
     
-    if(data.hp == null ){
+    if(data.hp == null || data.hp == "" || isValidPhoneNum(data.hp) == false){
     	alert("휴대폰 번호를 다시 확인하세요. ");
     	return;
     }
@@ -72,4 +72,15 @@ function getFormData($form){
     });
 
     return indexed_array;
+}
+
+
+function isValidPhoneNum(ph){
+	
+	var pattern = /(^010)\-([0-9]{4})\-([0-9]{4})/;
+	if(ph.match(pattern) == null){
+		return false;
+	}
+	
+	return true;
 }
