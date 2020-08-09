@@ -13,4 +13,10 @@ public interface UserRepository extends JpaRepository<UserAccount,Long>, Queryds
 
 	UserAccount findByEmailAndPassword(String email, String password);
 
+	UserAccount findFistByEmail(String email);
+
+	UserAccount findTop1ByEmailOrderByEmail(String email);
+
+	UserAccount findTop1ByEmailAndPasswordOrderByEmail(String email, String password);
+
 }
