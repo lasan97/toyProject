@@ -15,8 +15,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AnnouncementService {
 
-    private AnnouncementRepository announcementRepository;
-    private ModelMapper modelMapper;
+    private ModelMapper modelMapper = new ModelMapper();
+    private final AnnouncementRepository announcementRepository;
 
     public AnnouncementResponse insertAnnouncement(AnnouncementRequest request) {
         Announcement announcement = announcementRepository.save(modelMapper.map(request, Announcement.class));
@@ -29,6 +29,10 @@ public class AnnouncementService {
     }
 
     public AnnouncementResponse getAnnouncement(Long idx) {
-        return modelMapper.map(announcementRepository.findById(idx),AnnouncementResponse.class);
+        Announcement announcement = announcementRepository.findById(idx).orElse(null);
+        System.out.println(announcement.getIdx());
+
+
+        return modelMapper.map(announcement,AnnouncementResponse.class);
     }
 }

@@ -3,6 +3,7 @@ package com.toy.app.controller;
 import com.toy.app.model.announcement.model.AnnouncementRequest;
 import com.toy.app.model.announcement.model.AnnouncementResponse;
 import com.toy.app.service.AnnouncementService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import java.util.List;
 @Controller
 public class AnnouncementController {
 
+    @Autowired
     private AnnouncementService announcementService;
 
     // 공고 리스트
@@ -32,7 +34,9 @@ public class AnnouncementController {
             @PathVariable Long idx,
             Model model
     ){
-        model.addAttribute("announcemnet",announcementService.getAnnouncement(idx));
+        System.out.println(idx);
+        announcementService.getAnnouncement(idx);
+
         return "";
     }
 
