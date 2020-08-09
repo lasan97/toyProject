@@ -81,7 +81,7 @@
 						
 						<div class="loginField" style="">휴대폰 번호</div>
 						<div class="loginField">
-							<input type="text" name="hp" placeholder="010-0000-0000"
+							<input type="text" id="phoneNumber" name="hp" placeholder="010-0000-0000"
 								required style="width:100%">
 						</div>
 						<div class="loginField">

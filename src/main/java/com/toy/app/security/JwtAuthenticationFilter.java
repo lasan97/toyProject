@@ -20,50 +20,51 @@ import com.toy.app.model.account.UserAccount;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+public class JwtAuthenticationFilter {
+//	public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    private final AuthenticationManager authenticationManager;
-
-
-    /* Trigger when we issue POST request to /login
-    We also need to pass in {"username":"minho", "password":"minho123"} in the request body
-    * */
-    @Override
-    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-
-        // Grab credentials and map then to LoginViewModel
-        UserAccount credentials = null;
-        try {
-            credentials = new ObjectMapper().readValue(request.getInputStream(), UserAccount.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Create login token
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-                credentials.getName(),
-                credentials.getPassword(),
-                new ArrayList<>()
-        );
-
-        // Authenticate user
-        Authentication auth = authenticationManager.authenticate(authenticationToken);
-        return auth;
-    }
-
-
-    @Override
-    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        // Grab principal
-        UserPrincipal principal = (UserPrincipal) authResult.getPrincipal();
-
-        // Create JWT Token
-        String token = JWT.create()
-                .withSubject(principal.getUsername())
-                .withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.EXPIRATION_TIME))
-                .sign(Algorithm.HMAC512(JwtProperties.SECRET.getBytes()));
-
-        // Add token in response
-        response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + token);
-    }
+//    private final AuthenticationManager authenticationManager;
+//
+//
+//    /* Trigger when we issue POST request to /login
+//    We also need to pass in {"username":"minho", "password":"minho123"} in the request body
+//    * */
+//    @Override
+//    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
+//
+//        // Grab credentials and map then to LoginViewModel
+//        UserAccount credentials = null;
+//        try {
+//            credentials = new ObjectMapper().readValue(request.getInputStream(), UserAccount.class);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        // Create login token
+//        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
+//                credentials.getName(),
+//                credentials.getPassword(),
+//                new ArrayList<>()
+//        );
+//
+//        // Authenticate user
+//        Authentication auth = authenticationManager.authenticate(authenticationToken);
+//        return auth;
+//    }
+//
+//
+//    @Override
+//    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
+//        // Grab principal
+//        UserPrincipal principal = (UserPrincipal) authResult.getPrincipal();
+//
+//        // Create JWT Token
+//        String token = JWT.create()
+//                .withSubject(principal.getUsername())
+//                .withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.EXPIRATION_TIME))
+//                .sign(Algorithm.HMAC512(JwtProperties.SECRET.getBytes()));
+//
+//        // Add token in response
+//        response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + token);
+//    }
 }

@@ -1,7 +1,19 @@
+
 function ajaxSignUp() {
 
 	var formObj = $("#frmSignup");
     var data = getFormData(formObj);
+    
+    if(data.password == null || ( data.password != data.password_re ) ){
+    	alert("패스워드를 다시 확인하세요. ");
+    	return;
+    } 
+    
+    if(data.hp == null ){
+    	alert("휴대폰 번호를 다시 확인하세요. ");
+    	return;
+    }
+    
 		$.ajax({
 			type : "POST",
 			contentType : 'application/json',
