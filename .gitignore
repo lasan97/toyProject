@@ -23,7 +23,7 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 #*application.properties
-generated/*
+generated
 
 ### NetBeans ###
 /nbproject/private/
