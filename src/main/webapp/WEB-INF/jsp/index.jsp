@@ -3,9 +3,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>HOME</title>
 </head>
 <body>
-hihi
+hello ${name}
 </body>
 </html>

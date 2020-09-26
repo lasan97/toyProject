@@ -11,10 +11,9 @@
 <title>Sign Up</title>
 
 <!-- Bootstrap core CSS -->
-<link href="boot_template/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="boot_template/vendor/bootstrap/css/bootstrap.min.css">
 <!-- Custom styles for this template -->
-<link href="boot_template/css/modern-business.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="boot_template/css/modern-business.css" >
 
 <!-- Bootstrap core JavaScript -->
 <script src="boot_template/vendor/jquery/jquery.min.js"></script>

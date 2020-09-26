@@ -1,6 +1,5 @@
 package com.toy.app.controller;
 
-import org.hibernate.annotations.common.util.impl.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -28,18 +27,18 @@ public class LoginController {
         return "login/signup";
     }
 
-    @PostMapping(path="/signup")
+    @PostMapping("/signup")
     public ResponseEntity<Boolean> signup(
             @RequestBody UserAccount request
             ) throws CustomException{
         return ResponseEntity.ok(loginService.signUp(request));
     }
     
-    @PostMapping("/signin")
-    public ResponseEntity<Boolean> signin(
+    @PostMapping("/signin/auth")
+    public ResponseEntity<Boolean> signinAuth(
             @RequestBody UserAccount request
             ) throws CustomException{
-
+    			
         return ResponseEntity.ok(loginService.signinUser(request));
     }
     

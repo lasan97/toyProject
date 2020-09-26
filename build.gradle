@@ -33,6 +33,10 @@ dependencies {
     implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.3.6'
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     
+    //security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.security:spring-security-test'
+    
 }
 def querydslSrcDir = 'src/main/generated'
 

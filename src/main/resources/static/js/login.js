@@ -23,9 +23,9 @@ function ajaxSignUp() {
 			error : function(json) {
 				alert('error');
 			},
-			success : function(data) {
-				if (data.status == "400") {
-					alert(data.msg);
+			success : function(result) {
+				if (result.status == "400") {
+					alert(result.msg);
 					return;
 				}else{
 					alert("회원가입 성공");
@@ -46,13 +46,20 @@ function ajaxSignIn() {
 		contentType : 'application/json',
 		data : JSON.stringify(data),
 		dataType : 'json',
-		url : '/signin',
+		url : '/signin/auth',
 		error : function(json) {
 			alert('error');
+		},	
+		beforeSend : function(xhr)
+		{
+			//이거 안하면 403 error
+			//데이터를 전송하기 전에 헤더에 csrf값을 설정한다
+			var $token = $("#token");
+//			xhr.setRequestHeader($token.data("token-name"), $token.val());
 		},
-		success : function(data) {
-			if (data.status == "400") {
-				alert(data.msg);
+		success : function(result) {
+			if (result.status == "400") {
+				alert(result.msg);
 				return;
 			}else{
 				alert("로그인 성공");

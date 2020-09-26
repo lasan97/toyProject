@@ -44,12 +44,16 @@
     margin-right:35%;
     background:white;
     height: 400px;">
+    <input type="hidden" value="11" id="token">
     			<div id="formIn" style="margin:0px 20px 20px 20px;">
-					<form action="/signin" method="POST" id="frmSignin">
+					<form action="/signin/auth" method="POST" id="frmSignin">
 						<div style=""><h2>로그인</h2></div>
 						<div class="loginField" style="">이메일</div>
 						<div class="loginField" style="width:100%">
 							<input type="text" name="email" placeholder="Username" required style="width:100%">
+						</div>
+						<div class="loginField" style="width:100%">
+							<input type="text" name="username" placeholder="Username" required style="width:100%">
 						</div>
 						
 						<div class="loginField" style="">비밀번호</div>
@@ -60,6 +64,7 @@
 						<div class="loginField">
 						</div>
 						
+<!-- 						<button type="submit">Login</button> -->
 					</form>
 	
 					<div id="findPasswordArea" class="loginField">

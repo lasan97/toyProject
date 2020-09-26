@@ -1,9 +1,8 @@
-package com.toy.app.controller;
+package com.toy.app.exception;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.toy.app.exception.CustomException;
 import com.toy.app.model.common.CustomResponse;
 
 @RestControllerAdvice
